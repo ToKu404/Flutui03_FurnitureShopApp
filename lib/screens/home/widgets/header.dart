@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:furniture_shop/data/fake.dart';
 import 'package:furniture_shop/widgets/cart.dart';
 
+import 'search_bar.dart';
+
 class Header extends StatelessWidget {
   const Header({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.symmetric(vertical: 28, horizontal: 16),
+        padding: EdgeInsets.only(top: 28, bottom: 8, left: 16, right: 16),
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +32,8 @@ class Header extends StatelessWidget {
                 fontSize: 15,
                 color: Colors.black38,
               ),
-            )
+            ),
+            SearchBar(),
           ],
         ));
   }
