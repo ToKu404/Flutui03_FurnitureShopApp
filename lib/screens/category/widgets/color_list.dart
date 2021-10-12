@@ -21,6 +21,8 @@ class _ColorListState extends State<ColorList> {
       selected = color;
 
     if (widget.onSelect != null) widget.onSelect(selected);
+
+    setState(() {});
   }
 
   @override
@@ -28,8 +30,10 @@ class _ColorListState extends State<ColorList> {
     return Container(
       width: double.infinity,
       child: SingleChildScrollView(
+        padding: EdgeInsets.all(10),
         scrollDirection: Axis.horizontal,
         child: Wrap(
+          spacing: 20,
           children: widget.colors.map((e) {
             return InkWell(
               onTap: () {
@@ -43,7 +47,13 @@ class _ColorListState extends State<ColorList> {
                         ? Border.all(width: 3, color: primaryColor)
                         : null,
                     color: e,
-                    shape: BoxShape.circle),
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(.1),
+                          offset: Offset.zero,
+                          blurRadius: 15)
+                    ]),
               ),
             );
           }).toList(),
