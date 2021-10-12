@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:furniture_shop/constant/constant.dart';
+import 'package:furniture_shop/screens/category/widgets/color_list.dart';
 
 import 'filter_list.dart';
 
@@ -115,10 +116,18 @@ class FilteredModalBottomSheet extends StatelessWidget {
               ),
             ),
             Container(
-              child: FilterList(
-                onSelect : (selected) => print(selected)
+              child: FilterList(onSelect: (selected) => print(selected)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                "Item Color",
+                style: TextStyle(fontSize: 20),
               ),
-            )
+            ),
+            ColorList(
+                colors: [Colors.white, Colors.black87, Colors.blue],
+                onSelect: (color) => print(color)),
           ],
         ),
       ),

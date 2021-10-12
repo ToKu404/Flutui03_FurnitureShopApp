@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:furniture_shop/screens/category/widgets/filter_list_item.dart';
 
 class FilterList extends StatefulWidget {
   final Function(List<String>) onSelect;
@@ -27,8 +28,28 @@ class _FilterListState extends State<FilterList> {
     },
   ];
 
+  toggle(title) {
+    if (selected.contains(title))
+      selected.remove(title);
+    else
+      selected.add(title);
+
+    setState(() {
+      widget.onSelect(selected);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+        children: options.map((e) {
+      return FilterListItem(
+          title: e["title"],
+          icon: e["icon"],
+          selected: this.selected.contains(e["title"]),
+          onTap: () {
+            toggle(e["title"]);
+          });
+    }).toList());
   }
 }
